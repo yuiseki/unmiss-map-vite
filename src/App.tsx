@@ -95,7 +95,7 @@ function App() {
           <label htmlFor="flood-checkbox"> 🌊 Flood</label>
         </div>
       </div>
-      <BaseMap latitude={4.8426} longitude={31.5945} zoom={12}>
+      <BaseMap latitude={7.825} longitude={31.274} zoom={6}>
         <CountryBorderLayer />
         {militaryChecked && <MilitaryLayer />}
         {hospitalChecked && <HospitalLayer />}
