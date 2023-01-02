@@ -9,7 +9,7 @@ import { PowerLayer } from "./components/Layers/PowerLayer";
 
 function App() {
   const [militaryChecked, setMilitaryChecked] = useState(true);
-  const [hospitalChecked, setHospitalChecked] = useState(true);
+  const [hospitalChecked, setHospitalChecked] = useState(false);
   const [governmentChecked, setGovernmentChecked] = useState(false);
   const [powerChecked, setPowerChecked] = useState(false);
 
