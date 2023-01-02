@@ -15,7 +15,7 @@ const layerStyle: LineLayer = {
 };
 
 export const CountryBorderLayer: React.FC = () => {
-  const { data: geojson } = useSWR("/data/boundary.geojson", fetcher);
+  const { data: geojson } = useSWR("./data/boundary.geojson", fetcher);
 
   return (
     <>
