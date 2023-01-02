@@ -9,7 +9,7 @@ const layerStyle: FillLayer = {
   source: "hospital",
   layout: {},
   paint: {
-    "fill-color": "#0080ff",
+    "fill-color": "#FF8C00",
     "fill-opacity": 0.7,
   },
   filter: ["==", "$type", "Polygon"],
