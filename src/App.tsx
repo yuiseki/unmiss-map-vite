@@ -2,12 +2,16 @@ import { useState } from "react";
 import "./App.css";
 import { BaseMap } from "./components/BaseMap";
 import { CountryBorderLayer } from "./components/Layers/CountryBorderLayer";
+import { GovernmentLayer } from "./components/Layers/GovernmentLayer";
 import { HospitalLayer } from "./components/Layers/HospitalLayer";
 import { MilitaryLayer } from "./components/Layers/MilitaryLayer";
+import { PowerLayer } from "./components/Layers/PowerLayer";
 
 function App() {
   const [militaryChecked, setMilitaryChecked] = useState(true);
   const [hospitalChecked, setHospitalChecked] = useState(true);
+  const [governmentChecked, setGovernmentChecked] = useState(false);
+  const [powerChecked, setPowerChecked] = useState(false);
 
   return (
     <div className="App">
@@ -49,10 +53,19 @@ function App() {
           <input
             id="government-checkbox"
             type="checkbox"
-            disabled={true}
-            checked={false}
+            checked={governmentChecked}
+            onChange={(e) => setGovernmentChecked(e.target.checked)}
           />
           <label htmlFor="government-checkbox"> 🏢 Government</label>
+        </div>
+        <div style={{ paddingLeft: "20px" }}>
+          <input
+            id="power-checkbox"
+            type="checkbox"
+            checked={powerChecked}
+            onChange={(e) => setPowerChecked(e.target.checked)}
+          />
+          <label htmlFor="power-checkbox"> 💡 Power</label>
         </div>
         <div style={{ paddingLeft: "20px" }}>
           <input
@@ -72,11 +85,22 @@ function App() {
           />
           <label htmlFor="incident-checkbox"> ⚠️ Incident</label>
         </div>
+        <div style={{ paddingLeft: "20px" }}>
+          <input
+            id="flood-checkbox"
+            type="checkbox"
+            disabled={true}
+            checked={false}
+          />
+          <label htmlFor="flood-checkbox"> 🌊 Flood</label>
+        </div>
       </div>
       <BaseMap latitude={4.8426} longitude={31.5945} zoom={12}>
         <CountryBorderLayer />
         {militaryChecked && <MilitaryLayer />}
         {hospitalChecked && <HospitalLayer />}
+        {governmentChecked && <GovernmentLayer />}
+        {powerChecked && <PowerLayer />}
       </BaseMap>
     </div>
   );

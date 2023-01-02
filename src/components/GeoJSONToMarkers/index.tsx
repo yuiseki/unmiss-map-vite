@@ -19,10 +19,12 @@ export const GeoJSONToMarkers: React.FC<{
         if (
           (feature.properties &&
             feature.properties.operator &&
-            feature.properties.operator.includes("UN")) ||
+            (feature.properties.operator.includes("UN") ||
+              feature.properties.operator.includes("United Nations"))) ||
           (feature.properties &&
             feature.properties.name &&
-            feature.properties.name.includes("UN"))
+            (feature.properties.name.includes("UN") ||
+              feature.properties.name.includes("United Nations")))
         ) {
           icon = "🇺🇳";
         }
