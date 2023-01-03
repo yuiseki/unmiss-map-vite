@@ -11,8 +11,8 @@ export const GeoJSONToMarkers: React.FC<{
 }> = ({ geojson, emoji }) => {
   const { current: map } = useMap();
   const onClickMarker = useCallback(
-    (center: Feature<Point, GeoJsonProperties>) => {
-      if (map === undefined) {
+    (center: Feature<Point, GeoJsonProperties> | undefined) => {
+      if (map === undefined || center === undefined) {
         return;
       }
       const zoomTo = map.getZoom() < 10 ? 10 : 14;
@@ -32,9 +32,13 @@ export const GeoJSONToMarkers: React.FC<{
   return (
     <>
       {geojson.features.map((feature) => {
-        if (feature.geometry.type !== "Polygon") {
+        if (
+          feature.geometry.type !== "Polygon" &&
+          feature.geometry.type !== "LineString"
+        ) {
           return null;
         }
+        let zIndex = 100;
         let icon = emoji;
         if (
           (feature.properties &&
@@ -47,15 +51,37 @@ export const GeoJSONToMarkers: React.FC<{
               feature.properties.name.includes("United Nations")))
         ) {
           icon = "🇺🇳";
+          zIndex = 110;
         }
-        const polygonFeatures = turf.polygon(feature.geometry.coordinates);
-        const center = turf.centroid(polygonFeatures);
+        if (emoji === "🚧") {
+          zIndex = 115;
+        }
+        if (emoji === "⚠️") {
+          zIndex = 120;
+        }
+        let center: Feature<Point, GeoJsonProperties> | undefined = undefined;
+        switch (feature.geometry.type) {
+          case "Polygon":
+            const polygonFeatures = turf.polygon(feature.geometry.coordinates);
+            center = turf.centroid(polygonFeatures);
+            break;
+          case "LineString":
+            const bbox = turf.bbox(feature);
+            const polygon = turf.bboxPolygon(bbox);
+            center = turf.centroid(polygon);
+          default:
+            break;
+        }
+        if (center === undefined) {
+          return null;
+        }
         return (
           <Marker
             key={feature.id}
             longitude={center.geometry.coordinates[0]}
             latitude={center.geometry.coordinates[1]}
             onClick={() => onClickMarker(center)}
+            style={{ zIndex: zIndex }}
           >
             <div
               style={{

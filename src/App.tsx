@@ -4,11 +4,15 @@ import { BaseMap } from "./components/BaseMap";
 import { CountryBorderLayer } from "./components/Layers/CountryBorderLayer";
 import { GovernmentLayer } from "./components/Layers/GovernmentLayer";
 import { HospitalLayer } from "./components/Layers/HospitalLayer";
+import { IncidentLayer } from "./components/Layers/IncidentLayer";
 import { MilitaryLayer } from "./components/Layers/MilitaryLayer";
 import { PopulationLayer } from "./components/Layers/PopulationDensityLayer";
 import { PowerLayer } from "./components/Layers/PowerLayer";
+import { RoadClosedLayer } from "./components/Layers/RoadClosedLayer";
 
 function App() {
+  const [incidentChecked, setIncidentChecked] = useState(true);
+  const [roadClosedChecked, setRoadClosedChecked] = useState(true);
   const [militaryChecked, setMilitaryChecked] = useState(true);
   const [hospitalChecked, setHospitalChecked] = useState(false);
   const [governmentChecked, setGovernmentChecked] = useState(false);
@@ -39,7 +43,7 @@ function App() {
           overflowY: "hidden",
           overflowX: "auto",
           backgroundColor: "rgba(255, 255, 255, 0.8)",
-          zIndex: 100,
+          zIndex: 1000,
           fontFamily: "emoji",
         }}
       >
@@ -98,6 +102,24 @@ function App() {
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
+            id="incident-checkbox"
+            type="checkbox"
+            checked={incidentChecked}
+            onChange={(e) => setIncidentChecked(e.target.checked)}
+          />
+          <label htmlFor="incident-checkbox"> ⚠️ Incident</label>
+        </div>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
+          <input
+            id="road-closed-checkbox"
+            type="checkbox"
+            checked={roadClosedChecked}
+            onChange={(e) => setRoadClosedChecked(e.target.checked)}
+          />
+          <label htmlFor="road-closed-checkbox"> 🚧 Road closed</label>
+        </div>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
+          <input
             id="military-checkbox"
             type="checkbox"
             checked={militaryChecked}
@@ -134,24 +156,6 @@ function App() {
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
-            id="road-closed-checkbox"
-            type="checkbox"
-            disabled={true}
-            checked={false}
-          />
-          <label htmlFor="load-closed-checkbox"> 🚧 Road closed</label>
-        </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
-          <input
-            id="incident-checkbox"
-            type="checkbox"
-            disabled={true}
-            checked={false}
-          />
-          <label htmlFor="incident-checkbox"> ⚠️ Incident</label>
-        </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
-          <input
             id="flood-checkbox"
             type="checkbox"
             disabled={true}
@@ -167,6 +171,8 @@ function App() {
         style={styleJsonUrl}
       >
         <CountryBorderLayer />
+        {roadClosedChecked && <RoadClosedLayer />}
+        {incidentChecked && <IncidentLayer />}
         {militaryChecked && <MilitaryLayer />}
         {hospitalChecked && <HospitalLayer />}
         {governmentChecked && <GovernmentLayer />}
