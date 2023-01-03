@@ -1,11 +1,31 @@
 import * as turf from "@turf/turf";
-import { FeatureCollection } from "geojson";
-import { Marker } from "react-map-gl";
+import { Feature, FeatureCollection, GeoJsonProperties, Point } from "geojson";
+import { GeoJSONFeature } from "maplibre-gl";
+import { useCallback } from "react";
+import { Marker, useMap } from "react-map-gl";
+import { feature } from "turf";
 
 export const GeoJSONToMarkers: React.FC<{
   geojson: FeatureCollection;
   emoji?: string;
 }> = ({ geojson, emoji }) => {
+  const { current: map } = useMap();
+  const onClickMarker = useCallback(
+    (center: Feature<Point, GeoJsonProperties>) => {
+      if (map === undefined) {
+        return;
+      }
+      const zoomTo = map.getZoom() < 10 ? 10 : 14;
+      map.flyTo({
+        center: [
+          center.geometry.coordinates[0],
+          center.geometry.coordinates[1],
+        ],
+        zoom: zoomTo,
+      });
+    },
+    []
+  );
   if (geojson === undefined) {
     return null;
   }
@@ -28,13 +48,14 @@ export const GeoJSONToMarkers: React.FC<{
         ) {
           icon = "🇺🇳";
         }
-        const features = turf.polygon(feature.geometry.coordinates);
-        const center = turf.centroid(features);
+        const polygonFeatures = turf.polygon(feature.geometry.coordinates);
+        const center = turf.centroid(polygonFeatures);
         return (
           <Marker
             key={feature.id}
             longitude={center.geometry.coordinates[0]}
             latitude={center.geometry.coordinates[1]}
+            onClick={() => onClickMarker(center)}
           >
             <div
               style={{
