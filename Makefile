@@ -14,16 +14,21 @@ clean:
 	rm -rf public/data/*
 
 public/data/boundary.geojson:
+	mkdir -p tmp/data
 	scripts/fetch-boundary.sh
 
 public/data/military.geojson:
+	mkdir -p tmp/data
 	scripts/fetch-military.sh
 
 public/data/hospital.geojson:
+	mkdir -p tmp/data
 	scripts/fetch-hospital.sh
 
 public/data/government.geojson:
+	mkdir -p tmp/data
 	scripts/fetch-government.sh
 
 public/data/power.geojson:
+	mkdir -p tmp/data
 	scripts/fetch-power.sh

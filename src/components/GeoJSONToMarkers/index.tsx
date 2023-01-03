@@ -41,6 +41,7 @@ export const GeoJSONToMarkers: React.FC<{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                cursor: "pointer",
               }}
             >
               <div style={{ fontSize: "2em", fontFamily: "emoji" }}>{icon}</div>
