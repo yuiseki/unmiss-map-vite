@@ -6,13 +6,13 @@
 - [x] Show / Hide GeoJSON layers with checkbox
 - [x] Support mobile devices
 - [x] Switch the base tile to the satellite image
+- [x] Show / Hide png layers with checkbox
+- [ ] Show / Hide PMTiles layers with checkbox
 - [ ] Convert CSV to GeoJSON
 - [ ] Convert Shapefile to GeoJSON
-- [ ] Show / Hide Ortho image tiles layers with checkbox
-- [ ] Show / Hide PMTiles layers with checkbox
 - [ ] Merge multiple GeoJSON
 - [ ] Watch changes of GeoJSON files and live update layers
 - [ ] Export POI from PostGIS
 - [ ] Build and Show GeoJSON of patrol routes by OSRM
-- [ ] Test with QGIS
+- [ ] Update GeoJSON with QGIS
 - [ ] Support dynamically insert and live update layers

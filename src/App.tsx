@@ -5,6 +5,7 @@ import { CountryBorderLayer } from "./components/Layers/CountryBorderLayer";
 import { GovernmentLayer } from "./components/Layers/GovernmentLayer";
 import { HospitalLayer } from "./components/Layers/HospitalLayer";
 import { MilitaryLayer } from "./components/Layers/MilitaryLayer";
+import { PopulationLayer } from "./components/Layers/PopulationDensityLayer";
 import { PowerLayer } from "./components/Layers/PowerLayer";
 
 function App() {
