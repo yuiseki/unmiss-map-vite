@@ -10,7 +10,7 @@ const layerStyle: FillLayer = {
   layout: {},
   paint: {
     "fill-color": "#FF8C00",
-    "fill-opacity": 0.7,
+    "fill-opacity": 0.5,
   },
   filter: ["==", "$type", "Polygon"],
 };
