@@ -25,8 +25,8 @@ const lineStyle: LineLayer = {
   },
   paint: {
     "line-color": "red",
-    "line-opacity": 0.5,
-    "line-width": 10,
+    "line-opacity": 0.4,
+    "line-width": 5,
   },
 };
 
