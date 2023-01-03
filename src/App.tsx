@@ -63,8 +63,21 @@ function App() {
         >
           UNMISS Field Maps
         </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
-          <select value={styleJsonUrl} onChange={onChangeStyle}>
+        <div
+          style={{
+            whiteSpace: "nowrap",
+            paddingLeft: "20px",
+          }}
+        >
+          🗺{" "}
+          <select
+            style={{
+              maxWidth: "100px",
+              textOverflow: "ellipsis",
+            }}
+            value={styleJsonUrl}
+            onChange={onChangeStyle}
+          >
             <option
               value={
                 "https://yuiseki.github.io/vector-tile-south-sudan/style.json"
@@ -82,7 +95,7 @@ function App() {
             <option value={"./styles/arcgis.json"}>ArcGIS World Imagery</option>
           </select>
         </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
             id="military-checkbox"
             type="checkbox"
@@ -91,7 +104,7 @@ function App() {
           />
           <label htmlFor="military-checkbox"> 🪖 Military</label>
         </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
             id="hospital-checkbox"
             type="checkbox"
@@ -100,7 +113,7 @@ function App() {
           />
           <label htmlFor="hospital-checkbox"> 🏥 Hospital</label>
         </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
             id="government-checkbox"
             type="checkbox"
@@ -109,7 +122,7 @@ function App() {
           />
           <label htmlFor="government-checkbox"> 🏢 Government</label>
         </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
             id="power-checkbox"
             type="checkbox"
@@ -118,7 +131,7 @@ function App() {
           />
           <label htmlFor="power-checkbox"> 💡 Power</label>
         </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
             id="road-closed-checkbox"
             type="checkbox"
@@ -127,7 +140,7 @@ function App() {
           />
           <label htmlFor="load-closed-checkbox"> 🚧 Road closed</label>
         </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
             id="incident-checkbox"
             type="checkbox"
@@ -136,7 +149,7 @@ function App() {
           />
           <label htmlFor="incident-checkbox"> ⚠️ Incident</label>
         </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
             id="flood-checkbox"
             type="checkbox"
