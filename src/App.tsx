@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./App.css";
 import { BaseMap } from "./components/BaseMap";
 import { CountryBorderLayer } from "./components/Layers/CountryBorderLayer";
@@ -12,6 +12,16 @@ function App() {
   const [hospitalChecked, setHospitalChecked] = useState(false);
   const [governmentChecked, setGovernmentChecked] = useState(false);
   const [powerChecked, setPowerChecked] = useState(false);
+  const [styleJsonUrl, setStyleJsonUrl] = useState<string | undefined>(
+    undefined
+  );
+
+  const onChangeStyle = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      setStyleJsonUrl(e.target.value);
+    },
+    []
+  );
 
   return (
     <div className="App">
@@ -52,6 +62,25 @@ function App() {
           style={{ whiteSpace: "nowrap", paddingLeft: "10px", fontWeight: 600 }}
         >
           UNMISS Field Maps
+        </div>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
+          <select value={styleJsonUrl} onChange={onChangeStyle}>
+            <option
+              value={
+                "https://yuiseki.github.io/vector-tile-south-sudan/style.json"
+              }
+            >
+              UNMISS
+            </option>
+            <option
+              value={
+                "https://tile.openstreetmap.jp/styles/osm-bright/style.json"
+              }
+            >
+              OpenStreetMap
+            </option>
+            <option value={"./styles/arcgis.json"}>ArcGIS World Imagery</option>
+          </select>
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
           <input
@@ -117,7 +146,12 @@ function App() {
           <label htmlFor="flood-checkbox"> 🌊 Flood</label>
         </div>
       </div>
-      <BaseMap latitude={7.825} longitude={31.274} zoom={6}>
+      <BaseMap
+        latitude={7.825}
+        longitude={31.274}
+        zoom={6}
+        style={styleJsonUrl}
+      >
         <CountryBorderLayer />
         {militaryChecked && <MilitaryLayer />}
         {hospitalChecked && <HospitalLayer />}

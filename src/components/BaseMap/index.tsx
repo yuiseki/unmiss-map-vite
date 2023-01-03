@@ -34,10 +34,6 @@ export const BaseMap: React.FC<{
       hash={true}
     >
       {children}
-      <AttributionControl
-        position="bottom-right"
-        customAttribution="Style © OpenMapTiles | Data © OpenStreetMap contributors"
-      />
       <NavigationControl position="bottom-right" />
     </Map>
   );
