@@ -19,19 +19,41 @@ function App() {
         style={{
           display: "flex",
           alignItems: "center",
+          flexWrap: "nowrap",
           position: "absolute",
           top: 0,
           height: "50px",
           width: "100%",
+          maxWidth: "100%",
+          overflowY: "hidden",
+          overflowX: "auto",
           backgroundColor: "rgba(255, 255, 255, 0.8)",
           zIndex: 100,
           fontFamily: "emoji",
         }}
       >
-        <div style={{ paddingLeft: "20px", fontWeight: 600 }}>
+        <div
+          style={{
+            paddingLeft: "10px",
+            textAlign: "center",
+          }}
+        >
+          <img
+            style={{
+              display: "inline-block",
+              verticalAlign: "middle",
+            }}
+            src="./unopengis_logo.png"
+            width={40}
+            height={40}
+          />
+        </div>
+        <div
+          style={{ whiteSpace: "nowrap", paddingLeft: "10px", fontWeight: 600 }}
+        >
           UNMISS Field Maps
         </div>
-        <div style={{ paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
           <input
             id="military-checkbox"
             type="checkbox"
@@ -40,7 +62,7 @@ function App() {
           />
           <label htmlFor="military-checkbox"> 🪖 Military</label>
         </div>
-        <div style={{ paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
           <input
             id="hospital-checkbox"
             type="checkbox"
@@ -49,7 +71,7 @@ function App() {
           />
           <label htmlFor="hospital-checkbox"> 🏥 Hospital</label>
         </div>
-        <div style={{ paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
           <input
             id="government-checkbox"
             type="checkbox"
@@ -58,7 +80,7 @@ function App() {
           />
           <label htmlFor="government-checkbox"> 🏢 Government</label>
         </div>
-        <div style={{ paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
           <input
             id="power-checkbox"
             type="checkbox"
@@ -67,7 +89,7 @@ function App() {
           />
           <label htmlFor="power-checkbox"> 💡 Power</label>
         </div>
-        <div style={{ paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
           <input
             id="road-closed-checkbox"
             type="checkbox"
@@ -76,7 +98,7 @@ function App() {
           />
           <label htmlFor="load-closed-checkbox"> 🚧 Road closed</label>
         </div>
-        <div style={{ paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
           <input
             id="incident-checkbox"
             type="checkbox"
@@ -85,7 +107,7 @@ function App() {
           />
           <label htmlFor="incident-checkbox"> ⚠️ Incident</label>
         </div>
-        <div style={{ paddingLeft: "20px" }}>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "20px" }}>
           <input
             id="flood-checkbox"
             type="checkbox"
