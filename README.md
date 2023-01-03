@@ -1,12 +1,22 @@
 # unmiss-map-vite
 
+## Requirements
+
+- [x] Indicate the location of UN-related facilities
+- [x] Indicate the location of the hospital
+- [x] Indicate the location of oil fields and power plants
+- [x] Indicate whether the road or boundary is passable
+- [x] View incidents on maps
+- [x] Satellite images can also be displayed
+- [ ] Create patrol maps
+
 ## TODO
 
 - [x] Export specific POI from Overpass API and convert to GeoJSON
 - [x] Show / Hide GeoJSON layers with checkbox
 - [x] Support mobile devices
 - [x] Switch the base tile to the satellite image
-- [x] Click marker to zoom in
+- [x] Zoom in when maker has clicked
 - [x] ~~Show / Hide png layers with checkbox~~
 - [x] ~~Show / Hide PMTiles layers with checkbox~~
 - [ ] Convert CSV to GeoJSON
