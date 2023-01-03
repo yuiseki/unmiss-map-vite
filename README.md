@@ -7,9 +7,10 @@
 - [ ] Convert CSV to GeoJSON
 - [ ] Convert Shapefile to GeoJSON
 - [ ] Merge multiple GeoJSON
-- [ ] Watch changes of GeoJSON files and live update
+- [ ] Watch changes of GeoJSON files and live update layers
 - [ ] Export POI from PostGIS
 - [ ] Test with QGIS
 - [ ] Support PMTiles
 - [ ] Show Satellite image tiles
 - [ ] Show Ortho image tiles
+- [ ] Support dynamically insert and live update layers
