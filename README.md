@@ -22,6 +22,7 @@ The objective of this prototype is:
 
 - Fork this repository (Optional)
 - `git clone` repository
+- `npm i -g osmtogeojson`
 - `npm ci`
 - `make clean`
 - `make`
