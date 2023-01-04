@@ -79,6 +79,7 @@ function App() {
             style={{
               maxWidth: "100px",
               textOverflow: "ellipsis",
+            fontFamily: "emoji",
             }}
             value={styleJsonUrl}
             onChange={onChangeStyle}
@@ -88,93 +89,18 @@ function App() {
                 "https://yuiseki.github.io/vector-tile-south-sudan/style.json"
               }
             >
-              UNMISS
+              🗺 tilemaker
             </option>
             <option
               value={
                 "https://tile.openstreetmap.jp/styles/osm-bright/style.json"
               }
             >
-              OpenStreetMap
+              🗺 OpenStreetMap
             </option>
-            <option value={"./styles/arcgis.json"}>ArcGIS World Imagery</option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/clearmapVT-esri.json"
-              }
-            >
-              ClearMapVT-Esri
+            <option value={"./styles/arcgis.json"}>
+              🛰 ArcGIS World Imagery
             </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/rastertile.json"
-              }
-            >
-              ClearMapRaster-Esri
-            </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/dev-clearmap-plain.json"
-              }
-            >
-              InternalOnly-ClearMapVT-Plain
-            </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/dev-clearmap-gray.json"
-              }
-            >
-              InternalOnly-ClearMapVT-Gray
-            </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/dev-clearmap-dark.json"
-              }
-            >
-              InternalOnly-ClearMapVT-Dark
-            </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/dev-clearmap-modis.json"
-              }
-            >
-              InternalOnly-ClearMapVT-withModis
-            </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/dev-style-std.json"
-              }
-            >
-              InternalOnly-UniteStreetMapVT-Standard
-            </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/dev-style-prod.json"
-              }
-            >
-              InternalOnly-UniteStreetMapVT-Buidling3D
-            </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/dev-style-el.json"
-              }
-            >
-              InternalOnly-UniteStreetMapVT-Contour
-            </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/dev-style-el2.json"
-              }
-            >
-              InternalOnly-UniteStreetMapVT-3DTerrain
-            </option>
-            <option
-              value={
-                "https://ubukawa.github.io/ss-styles/styles/dev-style-std-azure.json"
-              }
-            >
-              InternalOnly-UniteStreetMapVT-withAzure
-            </option>            
           </select>
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
