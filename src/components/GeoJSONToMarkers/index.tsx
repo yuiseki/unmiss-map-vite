@@ -39,6 +39,7 @@ export const GeoJSONToMarkers: React.FC<{
           return null;
         }
         let zIndex = 100;
+        let fontSize = "2em";
         let icon = emoji;
         if (
           (feature.properties &&
@@ -55,6 +56,7 @@ export const GeoJSONToMarkers: React.FC<{
         }
         if (emoji === "🚧") {
           zIndex = 115;
+          fontSize = "1em";
         }
         if (emoji === "⚠️") {
           zIndex = 120;
@@ -91,10 +93,14 @@ export const GeoJSONToMarkers: React.FC<{
                 cursor: "pointer",
               }}
             >
-              <div style={{ fontSize: "2em", fontFamily: "emoji" }}>{icon}</div>
+              <div style={{ fontSize: fontSize, fontFamily: "emoji" }}>
+                {icon}
+              </div>
               <div
                 style={{
-                  backgroundColor: "rgba(0, 0, 0, 0.1)",
+                  color: "white",
+                  backgroundColor: "rgba(0, 0, 0, 0.4)",
+                  padding: "0 3px",
                 }}
               >
                 {feature.properties &&
