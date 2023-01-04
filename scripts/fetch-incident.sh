@@ -1,5 +1,6 @@
 # Source: https://reliefweb.int/updates?advanced-search=%28PC8657%29
 # Source: https://reliefweb.int/report/south-sudan/violent-clashes-south-sudan-intensify-humanitarian-situation
+# Source: https://reliefweb.int/report/south-sudan/unisfa-condemns-coordinated-attack-rumamier-village
 
 
 body="
@@ -8,6 +9,7 @@ area['name:en'='South Sudan']->.a;
 (
   nwr(id:2290290063,676500227)(area.a);
   nwr(id:243415089,691945620)(area.a);
+  nwr(id:253955885)(area.a);
 );
 out geom;
 "
