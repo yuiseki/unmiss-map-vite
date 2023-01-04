@@ -22,6 +22,7 @@ The objective of this prototype is:
 
 - Fork this repository (Optional)
 - `git clone` repository
+- `npm ci`
 - `make clean`
 - `make`
 - `npm run dev`
@@ -29,9 +30,9 @@ The objective of this prototype is:
 
 ## Requirements definition
 
-- [x] Indicate the location of UN-related facilities
+- [x] Indicate the location of the UN-related facilities
 - [x] Indicate the location of the military facilities
-- [x] Indicate the location of the hospital
+- [x] Indicate the location of the hospitals
 - [x] Indicate the location of the government facilities
 - [x] Indicate the location of oil fields and power plants
 - [x] Indicate whether the road or boundary is passable
@@ -49,6 +50,7 @@ The objective of this prototype is:
 - [x] Zoom in when marker has clicked
 - [x] ~~Show / Hide png layers with checkbox~~
 - [x] ~~Show / Hide PMTiles layers with checkbox~~
+- [ ] Add incidents editor UI
 - [ ] Build and Show the patrol routes by OSRM
 - [ ] Convert CSV to GeoJSON
 - [ ] Convert Shapefile to GeoJSON
