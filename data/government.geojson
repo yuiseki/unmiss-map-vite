@@ -1566,6 +1566,22 @@
 },
 {
   "type": "Feature",
+  "id": "node/2267947746",
+  "properties": {
+    "name": "UNHCR Bor",
+    "office": "quango",
+    "id": "node/2267947746"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      31.5649126,
+      6.1947779
+    ]
+  }
+},
+{
+  "type": "Feature",
   "id": "node/2565330302",
   "properties": {
     "name": "Directorate of Nationality, Passports & Immigration",
