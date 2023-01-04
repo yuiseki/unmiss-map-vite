@@ -96,7 +96,10 @@ function App() {
                 "https://tile.openstreetmap.jp/styles/osm-bright/style.json"
               }
             >
-              🗺 OpenStreetMap
+              🗺 tile.openstreetmap.jp osm-bright
+            </option>
+            <option value={"./styles/hot.json"}>
+              🗺 tile.openstreetmap.fr hot
             </option>
             <option value={"./styles/arcgis.json"}>
               🛰 ArcGIS World Imagery
