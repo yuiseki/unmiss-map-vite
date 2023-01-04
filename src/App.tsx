@@ -79,6 +79,7 @@ function App() {
             style={{
               maxWidth: "100px",
               textOverflow: "ellipsis",
+            fontFamily: "emoji",
             }}
             value={styleJsonUrl}
             onChange={onChangeStyle}
@@ -88,16 +89,18 @@ function App() {
                 "https://yuiseki.github.io/vector-tile-south-sudan/style.json"
               }
             >
-              UNMISS
+              🗺 tilemaker
             </option>
             <option
               value={
                 "https://tile.openstreetmap.jp/styles/osm-bright/style.json"
               }
             >
-              OpenStreetMap
+              🗺 OpenStreetMap
             </option>
-            <option value={"./styles/arcgis.json"}>ArcGIS World Imagery</option>
+            <option value={"./styles/arcgis.json"}>
+              🛰 ArcGIS World Imagery
+            </option>
           </select>
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
