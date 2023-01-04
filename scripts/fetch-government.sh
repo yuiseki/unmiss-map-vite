@@ -5,6 +5,7 @@ area['name:en'='South Sudan']->.a;
 (
   nwr[government](area.a);
   nwr[office='government'](area.a);
+  nwr[office='quango'](area.a);
 );
 out geom;
 "
