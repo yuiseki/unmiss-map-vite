@@ -46,7 +46,7 @@ The objective of this prototype is:
 - [x] Show / Hide GeoJSON layers with checkbox
 - [x] Support mobile devices
 - [x] Switch the base tile to the satellite image
-- [x] Zoom in when maker has clicked
+- [x] Zoom in when marker has clicked
 - [x] ~~Show / Hide png layers with checkbox~~
 - [x] ~~Show / Hide PMTiles layers with checkbox~~
 - [ ] Build and Show the patrol routes by OSRM
