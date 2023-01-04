@@ -79,7 +79,7 @@ function App() {
             style={{
               maxWidth: "100px",
               textOverflow: "ellipsis",
-            fontFamily: "emoji",
+              fontFamily: "emoji",
             }}
             value={styleJsonUrl}
             onChange={onChangeStyle}
@@ -177,7 +177,7 @@ function App() {
               }
             >
               🔒 InternalOnly-UniteStreetMapVT-withAzure
-            </option>  
+            </option>
           </select>
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
