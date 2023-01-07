@@ -9,13 +9,10 @@
         "name:ar": "قمروك",
         "place": "town",
         "id": "node/2290290063",
-        "properties": {
-          "id": "node/2290290063",
-          "incident:date:start": "2022-12-24T00:00:00.000Z",
-          "incident:type": "violence",
-          "incident:source:url": "https://reliefweb.int/report/south-sudan/violent-clashes-south-sudan-intensify-humanitarian-situation",
-          "incident:detail": "Gumuruk"
-        }
+        "incident:date:start": "2022-12-24T00:00:00.000Z",
+        "incident:type": "violence",
+        "incident:source:url": "https://reliefweb.int/report/south-sudan/violent-clashes-south-sudan-intensify-humanitarian-situation",
+        "incident:detail": "Gumuruk"
       },
       "geometry": {
         "type": "Point",
@@ -32,13 +29,10 @@
         "name": "Likuangole",
         "place": "town",
         "id": "node/243415089",
-        "properties": {
-          "id": "node/243415089",
-          "incident:date:start": "2022-12-24T00:00:00.000Z",
-          "incident:type": "violence",
-          "incident:source:url": "https://reliefweb.int/report/south-sudan/violent-clashes-south-sudan-intensify-humanitarian-situation",
-          "incident:detail": "Lekuangole"
-        }
+        "incident:date:start": "2022-12-24T00:00:00.000Z",
+        "incident:type": "violence",
+        "incident:source:url": "https://reliefweb.int/report/south-sudan/violent-clashes-south-sudan-intensify-humanitarian-situation",
+        "incident:detail": "Lekuangole"
       },
       "geometry": {
         "type": "Point",
@@ -55,13 +49,10 @@
         "landuse": "residential",
         "name": "Rumamier",
         "id": "way/253955885",
-        "properties": {
-          "id": "way/253955885",
-          "incident:date:start": "2022-12-24T00:00:00.000Z",
-          "incident:type": "violence",
-          "incident:source:url": "https://reliefweb.int/report/south-sudan/unisfa-condemns-coordinated-attack-rumamier-village",
-          "incident:detail": "Rumamier"
-        }
+        "incident:date:start": "2022-12-24T00:00:00.000Z",
+        "incident:type": "violence",
+        "incident:source:url": "https://reliefweb.int/report/south-sudan/unisfa-condemns-coordinated-attack-rumamier-village",
+        "incident:detail": "Rumamier"
       },
       "geometry": {
         "type": "Polygon",
@@ -361,13 +352,10 @@
       "properties": {
         "landuse": "residential",
         "id": "way/676500227",
-        "properties": {
-          "id": "way/676500227",
-          "incident:date:start": "2022-12-24T00:00:00.000Z",
-          "incident:type": "violence",
-          "incident:source:url": "https://reliefweb.int/report/south-sudan/violent-clashes-south-sudan-intensify-humanitarian-situation",
-          "incident:detail": "Gumuruk"
-        }
+        "incident:date:start": "2022-12-24T00:00:00.000Z",
+        "incident:type": "violence",
+        "incident:source:url": "https://reliefweb.int/report/south-sudan/violent-clashes-south-sudan-intensify-humanitarian-situation",
+        "incident:detail": "Gumuruk"
       },
       "geometry": {
         "type": "Polygon",
@@ -1687,13 +1675,10 @@
       "properties": {
         "abandoned:landuse": "residential",
         "id": "way/691945620",
-        "properties": {
-          "id": "way/691945620",
-          "incident:date:start": "2022-12-24T00:00:00.000Z",
-          "incident:type": "violence",
-          "incident:source:url": "https://reliefweb.int/report/south-sudan/violent-clashes-south-sudan-intensify-humanitarian-situation",
-          "incident:detail": "Lekuangole"
-        }
+        "incident:date:start": "2022-12-24T00:00:00.000Z",
+        "incident:type": "violence",
+        "incident:source:url": "https://reliefweb.int/report/south-sudan/violent-clashes-south-sudan-intensify-humanitarian-situation",
+        "incident:detail": "Lekuangole"
       },
       "geometry": {
         "type": "LineString",
