@@ -41,21 +41,21 @@ for file in $files; do
   js-yaml $file > "./tmp/$file.json"
 done
 
-# Merge incidents JSON files
+# Merge JSON files of 'array of properties of incidents'
 find tmp/data/incidents/ -name "*.json" -print0 | xargs -0 cat | jq -s '[.[] | .properties]' > tmp/data/incidents_tags.json
 
-# Extract only features as array from GeoJSON and save it to JSON file
+# Extract only 'array of features' from GeoJSON and save it to JSON file
 cat tmp/data/incidents.geojson | jq '.features' > tmp/data/incidents_features.json
 
-# Extract only properties of features as array from GeoJSON and save it to JSON file
+# Extract only 'array of properties of features' from GeoJSON and save it to JSON file
 cat tmp/data/incidents.geojson | jq '[.features[] | .properties]' > tmp/data/incidents_props.json
 
-# Merge 'properties of features as array' and 'incidents JSON files' group by osm id
-# This step output array of objects like {id: osm_id, properties: merged_properties}
+# Merge the 'array of properties of incidents' and the 'array of properties of features', group by osm id
+# This step output array of objects like [{id: osm_id, properties: merged_properties}, ...]
 jq -s 'map(.[])' tmp/data/incidents_props.json tmp/data/incidents_tags.json | jq '[group_by(.id)[] | add | {id:.id, properties:.} ]' > tmp/data/incidents_merged.json
 
-# Merge 'features as array' and properties of incidents
+# Merge 'array of features' and properties with incidents
 jq -s 'map(.[])' tmp/data/incidents_features.json tmp/data/incidents_merged.json | jq '[group_by(.id)[] | add]' > tmp/data/incidents_features_merged.json
 
-# Convert to FeatureCollection
+# Convert it to FeatureCollection
 cat tmp/data/incidents_features_merged.json | jq -s '{"type":"FeatureCollection", "features":.[]}' > public/data/incidents.geojson
