@@ -109,7 +109,7 @@ function App() {
             <option value={"./styles/hot.json"}>
               🗺 tile.openstreetmap.fr hot
             </option>
-            <option value={"./styles/arcgis.json"}>
+            <option value={"./styles/ArcGIS/World_Imagery/style.json"}>
               🛰 ArcGIS World Imagery
             </option>
             <option

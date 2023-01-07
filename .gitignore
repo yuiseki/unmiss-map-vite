@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 tmp
+
+public/styles/ArcGIS/World_Basemap_v2
