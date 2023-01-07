@@ -35,11 +35,15 @@ export const RoadClosedLayer: React.FC = () => {
 
   return (
     <>
-      <GeoJSONToMarkers geojson={geojson} emoji="🚧" />
-      <Source id="road-closed" type="geojson" data={geojson}>
-        <Layer {...fillStyle} />
-        <Layer {...lineStyle} />
-      </Source>
+      {geojson && (
+        <>
+          <GeoJSONToMarkers geojson={geojson} emoji="🚧" />
+          <Source id="road-closed" type="geojson" data={geojson}>
+            <Layer {...fillStyle} />
+            <Layer {...lineStyle} />
+          </Source>
+        </>
+      )}
     </>
   );
 };

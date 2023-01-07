@@ -35,11 +35,15 @@ export const IncidentLayer: React.FC = () => {
 
   return (
     <>
-      <GeoJSONToMarkers geojson={geojson} emoji="⚠️" />
-      <Source id="incident" type="geojson" data={geojson}>
-        <Layer {...fillStyle} />
-        <Layer {...lineStyle} />
-      </Source>
+      {geojson && (
+        <>
+          <GeoJSONToMarkers geojson={geojson} emoji="⚠️" />
+          <Source id="incident" type="geojson" data={geojson}>
+            <Layer {...fillStyle} />
+            <Layer {...lineStyle} />
+          </Source>
+        </>
+      )}
     </>
   );
 };

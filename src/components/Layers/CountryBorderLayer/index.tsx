@@ -19,9 +19,11 @@ export const CountryBorderLayer: React.FC = () => {
 
   return (
     <>
-      <Source id="country-border" type="geojson" data={geojson}>
-        <Layer {...layerStyle} />
-      </Source>
+      {geojson && (
+        <Source id="country-border" type="geojson" data={geojson}>
+          <Layer {...layerStyle} />
+        </Source>
+      )}
     </>
   );
 };

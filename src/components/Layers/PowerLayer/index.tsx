@@ -20,10 +20,14 @@ export const PowerLayer: React.FC = () => {
 
   return (
     <>
-      <GeoJSONToMarkers geojson={geojson} emoji="💡" />
-      <Source id="power" type="geojson" data={geojson}>
-        <Layer {...layerStyle} />
-      </Source>
+      {geojson && (
+        <>
+          <GeoJSONToMarkers geojson={geojson} emoji="💡" />
+          <Source id="power" type="geojson" data={geojson}>
+            <Layer {...layerStyle} />
+          </Source>
+        </>
+      )}
     </>
   );
 };

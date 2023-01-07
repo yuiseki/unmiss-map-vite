@@ -20,10 +20,14 @@ export const GovernmentLayer: React.FC = () => {
 
   return (
     <>
-      <GeoJSONToMarkers geojson={geojson} emoji="🏢" />
-      <Source id="government" type="geojson" data={geojson}>
-        <Layer {...layerStyle} />
-      </Source>
+      {geojson && (
+        <>
+          <GeoJSONToMarkers geojson={geojson} emoji="🏢" />
+          <Source id="government" type="geojson" data={geojson}>
+            <Layer {...layerStyle} />
+          </Source>
+        </>
+      )}
     </>
   );
 };

@@ -11,6 +11,7 @@ import { PowerLayer } from "./components/Layers/PowerLayer";
 import { RoadClosedLayer } from "./components/Layers/RoadClosedLayer";
 
 function App() {
+  const [mapLoaded, setMapLoaded] = useState(false);
   const [incidentChecked, setIncidentChecked] = useState(true);
   const [roadClosedChecked, setRoadClosedChecked] = useState(true);
   const [militaryChecked, setMilitaryChecked] = useState(true);
@@ -20,6 +21,10 @@ function App() {
   const [styleJsonUrl, setStyleJsonUrl] = useState<string | undefined>(
     undefined
   );
+
+  const onMapLoad = useCallback(() => {
+    setMapLoaded(true);
+  }, []);
 
   const onChangeStyle = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -255,14 +260,19 @@ function App() {
         longitude={31.274}
         zoom={6}
         style={styleJsonUrl}
+        onMapLoad={onMapLoad}
       >
-        <CountryBorderLayer />
-        {roadClosedChecked && <RoadClosedLayer />}
-        {incidentChecked && <IncidentLayer />}
-        {militaryChecked && <MilitaryLayer />}
-        {hospitalChecked && <HospitalLayer />}
-        {governmentChecked && <GovernmentLayer />}
-        {powerChecked && <PowerLayer />}
+        {mapLoaded && (
+          <>
+            <CountryBorderLayer />
+            {roadClosedChecked && <RoadClosedLayer />}
+            {incidentChecked && <IncidentLayer />}
+            {militaryChecked && <MilitaryLayer />}
+            {hospitalChecked && <HospitalLayer />}
+            {governmentChecked && <GovernmentLayer />}
+            {powerChecked && <PowerLayer />}
+          </>
+        )}
       </BaseMap>
     </div>
   );

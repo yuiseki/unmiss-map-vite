@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Map, NavigationControl } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -10,15 +10,24 @@ export const BaseMap: React.FC<{
   zoom: number;
   children?: any;
   style?: string;
+  onMapLoad?: () => void;
 }> = ({
   longitude,
   latitude,
   zoom,
   children,
   style = "https://yuiseki.github.io/vector-tile-south-sudan/style.json",
+  onMapLoad,
 }) => {
   let protocol = new pmtiles.Protocol();
   maplibregl.addProtocol("pmtiles", protocol.tile);
+
+  const onLoad = useCallback(() => {
+    if (onMapLoad) {
+      onMapLoad();
+    }
+  }, []);
+
   return (
     <Map
       style={{
@@ -26,6 +35,7 @@ export const BaseMap: React.FC<{
         width: "100vw",
         height: "100vh",
       }}
+      onLoad={onLoad}
       mapLib={maplibregl}
       mapStyle={style}
       attributionControl={true}

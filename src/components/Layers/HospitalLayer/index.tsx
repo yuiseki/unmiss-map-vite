@@ -20,10 +20,14 @@ export const HospitalLayer: React.FC = () => {
 
   return (
     <>
-      <GeoJSONToMarkers geojson={geojson} emoji="🏥" />
-      <Source id="hospital" type="geojson" data={geojson}>
-        <Layer {...layerStyle} />
-      </Source>
+      {geojson && (
+        <>
+          <GeoJSONToMarkers geojson={geojson} emoji="🏥" />
+          <Source id="hospital" type="geojson" data={geojson}>
+            <Layer {...layerStyle} />
+          </Source>
+        </>
+      )}
     </>
   );
 };
