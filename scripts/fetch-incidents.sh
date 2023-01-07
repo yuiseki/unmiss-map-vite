@@ -42,13 +42,13 @@ for file in $files; do
 done
 
 # Merge incidents JSON files
-find tmp/data/incidents/ -name "*.json" -print0 | xargs -0 cat | jq -s '[.[]]' > tmp/data/incidents_tags.json
+find tmp/data/incidents/ -name "*.json" -print0 | xargs -0 cat | jq -s '[.[] | .properties]' > tmp/data/incidents_tags.json
 
 # Extract only features as array from GeoJSON and save it to JSON file
 cat tmp/data/incidents.geojson | jq '.features' > tmp/data/incidents_features.json
 
 # Extract only properties of features as array from GeoJSON and save it to JSON file
-cat tmp/data/incidents.geojson | jq '[.features[].properties]' > tmp/data/incidents_props.json
+cat tmp/data/incidents.geojson | jq '[.features[] | .properties]' > tmp/data/incidents_props.json
 
 # Merge 'properties of features as array' and 'incidents JSON files' group by osm id
 # This step output array of objects like {id: osm_id, properties: merged_properties}
