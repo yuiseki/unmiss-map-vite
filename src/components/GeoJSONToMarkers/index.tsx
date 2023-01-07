@@ -107,7 +107,9 @@ export const GeoJSONToMarkers: React.FC<{
                 cursor: "pointer",
               }}
             >
-              <div style={{ fontSize: fontSize, fontFamily: "emoji" }}>
+              <div
+                style={{ fontSize: fontSize, fontFamily: "sans-serif, emoji" }}
+              >
                 {icon}
               </div>
               <div

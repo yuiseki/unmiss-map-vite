@@ -6,9 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UNMISS Field Maps</title>
     <style>
+      body {
+        font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+          "Hiragino Sans", Meiryo, sans-serif;
+      }
+
       @font-face {
         font-family: emoji;
+        /*
+          https://xem.github.io/unicode13/emoji.html
+         */
         src: url(./Twemoji.ttf);
+        /*
+          https://github.com/mozilla/twemoji-colr/issues/56
+         */
+        unicode-range: U+00A9-E007F;
       }
 
       input[type="checkbox"] {

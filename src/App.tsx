@@ -44,7 +44,7 @@ function App() {
           overflowX: "auto",
           backgroundColor: "rgba(255, 255, 255, 0.8)",
           zIndex: 1000,
-          fontFamily: "emoji",
+          fontFamily: "sans-serif, emoji",
         }}
       >
         <div
@@ -72,14 +72,17 @@ function App() {
           style={{
             whiteSpace: "nowrap",
             paddingLeft: "20px",
+            fontFamily: "sans-serif, emoji",
           }}
         >
           🗺{" "}
           <select
             style={{
+              height: "1.8em",
               maxWidth: "100px",
               textOverflow: "ellipsis",
-              fontFamily: "emoji",
+              fontSize: "0.8em",
+              fontFamily: "sans-serif, emoji",
             }}
             value={styleJsonUrl}
             onChange={onChangeStyle}
@@ -158,7 +161,7 @@ function App() {
                 "https://ubukawa.github.io/ss-styles/styles/dev-style-prod.json"
               }
             >
-              🔒 InternalOnly-UniteStreetMapVT-Buidling3D
+              🔒 InternalOnly-UniteStreetMapVT-Building3D
             </option>
             <option
               value={
