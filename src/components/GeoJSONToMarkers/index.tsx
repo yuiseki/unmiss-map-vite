@@ -32,12 +32,17 @@ export const GeoJSONToMarkers: React.FC<{
   return (
     <>
       {geojson.features.map((feature) => {
+        if (feature.geometry === undefined) {
+          return null;
+        }
         if (
           feature.geometry.type !== "Polygon" &&
-          feature.geometry.type !== "LineString"
+          feature.geometry.type !== "LineString" &&
+          feature.geometry.type !== "Point"
         ) {
           return null;
         }
+
         let zIndex = 100;
         let fontSize = "2em";
         let icon = emoji;
@@ -53,6 +58,7 @@ export const GeoJSONToMarkers: React.FC<{
           title = feature.properties.name;
         }
 
+        // United Nations
         if (
           (feature.properties &&
             feature.properties.operator &&
@@ -66,14 +72,22 @@ export const GeoJSONToMarkers: React.FC<{
           icon = "🇺🇳";
           zIndex = 110;
         }
+
+        // Road closed
         if (emoji === "🚧") {
           zIndex = 115;
           fontSize = "1em";
           name = "";
         }
+
+        // Incidents
         if (emoji === "⚠️") {
           zIndex = 120;
+          if (feature.properties && feature.properties["incident:detail"]) {
+            name = feature.properties["incident:detail"];
+          }
         }
+
         let center: Feature<Point, GeoJsonProperties> | undefined = undefined;
         switch (feature.geometry.type) {
           case "Polygon":
@@ -84,6 +98,9 @@ export const GeoJSONToMarkers: React.FC<{
             const bbox = turf.bbox(feature);
             const polygon = turf.bboxPolygon(bbox);
             center = turf.centroid(polygon);
+            break;
+          case "Point":
+            center = turf.point(feature.geometry.coordinates);
           default:
             break;
         }
