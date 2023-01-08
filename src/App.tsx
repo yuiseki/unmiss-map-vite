@@ -268,15 +268,6 @@ function App() {
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
-            id="water-checkbox"
-            type="checkbox"
-            checked={waterChecked}
-            onChange={(e) => setWaterChecked(e.target.checked)}
-          />
-          <label htmlFor="water-checkbox"> 🚰 Water</label>
-        </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
-          <input
             id="hospital-checkbox"
             type="checkbox"
             checked={hospitalChecked}
@@ -292,6 +283,15 @@ function App() {
             onChange={(e) => setGovernmentChecked(e.target.checked)}
           />
           <label htmlFor="government-checkbox"> 🏢 Government</label>
+        </div>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
+          <input
+            id="water-checkbox"
+            type="checkbox"
+            checked={waterChecked}
+            onChange={(e) => setWaterChecked(e.target.checked)}
+          />
+          <label htmlFor="water-checkbox"> 🚰 Water</label>
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
