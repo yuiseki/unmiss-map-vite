@@ -11,6 +11,7 @@ import { PowerLayer } from "./components/Layers/PowerLayer";
 import { RoadClosedLayer } from "./components/Layers/RoadClosedLayer";
 import { useLocalStorage } from "./hooks/localStorage";
 import { WaterLayer } from "./components/Layers/WaterLayer";
+import { RefugeeSiteLayer } from "./components/Layers/RefugeeSiteLayer";
 
 function App() {
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -42,6 +43,10 @@ function App() {
   );
   const [waterChecked, setWaterChecked] = useLocalStorage(
     "unmiss-water-checked",
+    false
+  );
+  const [refugeeSiteChecked, setRefugeeSiteChecked] = useLocalStorage(
+    "refugee-site-checked",
     false
   );
 
@@ -227,6 +232,15 @@ function App() {
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
+            id="military-checkbox"
+            type="checkbox"
+            checked={militaryChecked}
+            onChange={(e) => setMilitaryChecked(e.target.checked)}
+          />
+          <label htmlFor="military-checkbox"> 🪖 Military</label>
+        </div>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
+          <input
             id="incident-checkbox"
             type="checkbox"
             checked={incidentChecked}
@@ -245,12 +259,21 @@ function App() {
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
-            id="military-checkbox"
+            id="refugee-site-checkbox"
             type="checkbox"
-            checked={militaryChecked}
-            onChange={(e) => setMilitaryChecked(e.target.checked)}
+            checked={refugeeSiteChecked}
+            onChange={(e) => setRefugeeSiteChecked(e.target.checked)}
           />
-          <label htmlFor="military-checkbox"> 🪖 Military</label>
+          <label htmlFor="refugee-site-checkbox"> ✅ Refugee site</label>
+        </div>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
+          <input
+            id="water-checkbox"
+            type="checkbox"
+            checked={waterChecked}
+            onChange={(e) => setWaterChecked(e.target.checked)}
+          />
+          <label htmlFor="water-checkbox"> 🚰 Water</label>
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
@@ -279,15 +302,6 @@ function App() {
           />
           <label htmlFor="power-checkbox"> 💡 Power</label>
         </div>
-        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
-          <input
-            id="water-checkbox"
-            type="checkbox"
-            checked={waterChecked}
-            onChange={(e) => setWaterChecked(e.target.checked)}
-          />
-          <label htmlFor="water-checkbox"> 🚰 Water</label>
-        </div>
       </div>
       <BaseMap
         latitude={7.825}
@@ -303,6 +317,7 @@ function App() {
         {hospitalChecked && <HospitalLayer />}
         {governmentChecked && <GovernmentLayer />}
         {waterChecked && <WaterLayer />}
+        {refugeeSiteChecked && <RefugeeSiteLayer />}
         {powerChecked && <PowerLayer />}
       </BaseMap>
     </div>
