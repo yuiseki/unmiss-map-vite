@@ -10,6 +10,7 @@ import { PopulationLayer } from "./components/Layers/PopulationDensityLayer";
 import { PowerLayer } from "./components/Layers/PowerLayer";
 import { RoadClosedLayer } from "./components/Layers/RoadClosedLayer";
 import { useLocalStorage } from "./hooks/localStorage";
+import { WaterLayer } from "./components/Layers/WaterLayer";
 
 function App() {
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -39,6 +40,11 @@ function App() {
     "unmiss-power-checked",
     false
   );
+  const [waterChecked, setWaterChecked] = useLocalStorage(
+    "unmiss-water-checked",
+    false
+  );
+
   const [styleJsonUrl, setStyleJsonUrl] = useLocalStorage<string | undefined>(
     "unmiss-style-json-url",
     undefined
@@ -275,12 +281,12 @@ function App() {
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
-            id="flood-checkbox"
+            id="water-checkbox"
             type="checkbox"
-            disabled={true}
-            checked={false}
+            checked={waterChecked}
+            onChange={(e) => setWaterChecked(e.target.checked)}
           />
-          <label htmlFor="flood-checkbox"> 🌊 Flood</label>
+          <label htmlFor="water-checkbox"> 🚰 Water</label>
         </div>
       </div>
       <BaseMap
@@ -296,6 +302,7 @@ function App() {
         {militaryChecked && <MilitaryLayer />}
         {hospitalChecked && <HospitalLayer />}
         {governmentChecked && <GovernmentLayer />}
+        {waterChecked && <WaterLayer />}
         {powerChecked && <PowerLayer />}
       </BaseMap>
     </div>

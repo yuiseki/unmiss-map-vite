@@ -2,7 +2,10 @@
 body="
 [out:json][timeout:30000];
 area['name:en'='South Sudan']->.a;
-nwr[amenity='water_point'](area.a);
+(
+  nwr[amenity='water_point'](area.a);
+  nwr[man_made='water_well'](area.a);
+);
 out geom;
 "
 
