@@ -131,6 +131,7 @@ function App() {
             <option value={"./styles/hot.json"}>
               🗺 tile.openstreetmap.fr hot
             </option>
+            <option value={"./styles/GSI/style.json"}>🛰 GSI DEM</option>
             <option value={"./styles/ArcGIS/World_Imagery/style.json"}>
               🛰 ArcGIS World Imagery
             </option>
@@ -284,17 +285,13 @@ function App() {
         style={styleJsonUrl}
         onMapLoad={onMapLoad}
       >
-        {mapLoaded && (
-          <>
-            <CountryBorderLayer />
-            {roadClosedChecked && <RoadClosedLayer />}
-            {incidentChecked && <IncidentLayer />}
-            {militaryChecked && <MilitaryLayer />}
-            {hospitalChecked && <HospitalLayer />}
-            {governmentChecked && <GovernmentLayer />}
-            {powerChecked && <PowerLayer />}
-          </>
-        )}
+        <CountryBorderLayer />
+        {roadClosedChecked && <RoadClosedLayer />}
+        {incidentChecked && <IncidentLayer />}
+        {militaryChecked && <MilitaryLayer />}
+        {hospitalChecked && <HospitalLayer />}
+        {governmentChecked && <GovernmentLayer />}
+        {powerChecked && <PowerLayer />}
       </BaseMap>
     </div>
   );
