@@ -8,10 +8,10 @@
         "https://b.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
         "https://c.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
       ],
-      "tileSize": 256
+      "tileSize": 256,
+      "attribution": "Style © HOT | Data © OpenStreetMap Contributors"
     }
   },
-  "attribution": "Style © HOT | Data © OpenStreetMap Contributors",
   "layers": [
     {
       "id": "hot",
