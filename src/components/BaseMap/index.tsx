@@ -45,9 +45,16 @@ export const BaseMap: React.FC<{
         zoom: zoom,
       }}
       hash={true}
+      maxZoom={22}
+      maxPitch={85}
     >
       {children}
-      <NavigationControl position="bottom-right" />
+      <NavigationControl
+        position="bottom-right"
+        visualizePitch={true}
+        showZoom={true}
+        showCompass={true}
+      />
     </Map>
   );
 };
