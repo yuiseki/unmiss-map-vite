@@ -9,16 +9,38 @@ import { MilitaryLayer } from "./components/Layers/MilitaryLayer";
 import { PopulationLayer } from "./components/Layers/PopulationDensityLayer";
 import { PowerLayer } from "./components/Layers/PowerLayer";
 import { RoadClosedLayer } from "./components/Layers/RoadClosedLayer";
+import { useLocalStorage } from "./hooks/localStorage";
 
 function App() {
   const [mapLoaded, setMapLoaded] = useState(false);
-  const [incidentChecked, setIncidentChecked] = useState(true);
-  const [roadClosedChecked, setRoadClosedChecked] = useState(true);
-  const [militaryChecked, setMilitaryChecked] = useState(true);
-  const [hospitalChecked, setHospitalChecked] = useState(false);
-  const [governmentChecked, setGovernmentChecked] = useState(false);
-  const [powerChecked, setPowerChecked] = useState(false);
-  const [styleJsonUrl, setStyleJsonUrl] = useState<string | undefined>(
+
+  const [incidentChecked, setIncidentChecked] = useLocalStorage(
+    "unmiss-incident-checked",
+    true
+  );
+
+  const [roadClosedChecked, setRoadClosedChecked] = useLocalStorage(
+    "unmiss-road-closed-checked",
+    true
+  );
+  const [militaryChecked, setMilitaryChecked] = useLocalStorage(
+    "unmiss-military-checked",
+    true
+  );
+  const [hospitalChecked, setHospitalChecked] = useLocalStorage(
+    "unmiss-hospital-checked",
+    false
+  );
+  const [governmentChecked, setGovernmentChecked] = useLocalStorage(
+    "unmiss-government-checked",
+    false
+  );
+  const [powerChecked, setPowerChecked] = useLocalStorage(
+    "unmiss-power-checked",
+    false
+  );
+  const [styleJsonUrl, setStyleJsonUrl] = useLocalStorage<string | undefined>(
+    "unmiss-style-json-url",
     undefined
   );
 
