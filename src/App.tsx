@@ -106,7 +106,7 @@ function App() {
           <select
             style={{
               height: "1.8em",
-              maxWidth: "100px",
+              maxWidth: "130px",
               textOverflow: "ellipsis",
               fontSize: "0.8em",
               fontFamily: "sans-serif, emoji",
@@ -119,21 +119,26 @@ function App() {
                 "https://yuiseki.github.io/vector-tile-south-sudan/style.json"
               }
             >
-              🗺 tilemaker
+              🗺 tilemaker (vector)
             </option>
             <option
               value={
                 "https://tile.openstreetmap.jp/styles/osm-bright/style.json"
               }
             >
-              🗺 tile.openstreetmap.jp osm-bright
+              🗺 OSM JP bright (vector)
             </option>
-            <option value={"./styles/hot.json"}>
-              🗺 tile.openstreetmap.fr hot
+            <option value={"./styles/HOT/style.json"}>
+              🗺 OSM HOT (raster)
             </option>
-            <option value={"./styles/GSI/style.json"}>🛰 GSI DEM</option>
+            <option value={"./styles/GSI/earthhillshade/style.json"}>
+              🏕 GSI earthhillshade (raster)
+            </option>
+            <option value={"./styles/GSI/DEM/style.json"}>
+              🏕 GSI DEM (raster)
+            </option>
             <option value={"./styles/ArcGIS/World_Imagery/style.json"}>
-              🛰 ArcGIS World Imagery
+              🛰 ArcGIS World Imagery (raster)
             </option>
             <option
               value={

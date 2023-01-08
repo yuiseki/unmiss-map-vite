@@ -1,0 +1,31 @@
+{
+  "version": 8,
+  "sources": {
+    "gsi": {
+      "type": "raster",
+      "tiles": [
+        "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg"
+      ],
+      "attribution": "Data: <a href=\"https://maps.gsi.go.jp/development/ichiran.html\">国土地理院 地理院タイル</a>"
+    },
+    "gsidem": {
+      "type": "raster-dem",
+      "tiles": [
+          "gsidem://https://cyberjapandata.gsi.go.jp/xyz/dem_png/{z}/{x}/{y}.png"
+      ],
+      "tileSize": 256,
+      "maxzoom": 14
+    }
+  },
+  "layers": [
+    {
+      "id": "gsi",
+      "type": "raster",
+      "source": "gsi"
+    }
+  ],
+  "terrain": {
+    "source": "gsidem",
+    "exaggeration": 1.2
+  }
+}

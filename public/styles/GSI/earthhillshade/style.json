@@ -1,0 +1,21 @@
+{
+  "version": 8,
+  "sources": {
+    "earthhillshade": {
+      "type": "raster",
+      "tiles": [
+        "https://cyberjapandata.gsi.go.jp/xyz/earthhillshade/{z}/{x}/{y}.png"
+      ],
+      "attribution": "Data: <a href=\"https://maps.gsi.go.jp/development/ichiran.html\">国土地理院 地理院タイル</a>"
+    }
+  },
+  "layers": [
+    {
+      "id": "earthhillshade",
+      "type": "raster",
+      "source": "earthhillshade",
+      "minzoom": 0,
+      "maxzoom": 8
+    }
+  ]
+}
