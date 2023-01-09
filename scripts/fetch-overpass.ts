@@ -2,7 +2,7 @@ import { load } from "js-yaml";
 import { readFileSync, writeFileSync } from "fs";
 import osmtogeojson from "osmtogeojson";
 
-const config = load(readFileSync("scripts/layers.yml", "utf8")) as any;
+const config = load(readFileSync("overpass.yml", "utf8")) as any;
 
 const convertOverpassTag = (nwr: any) => {
   return nwr

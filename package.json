@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "fetch-layers": "node --loader ts-node/esm scripts/fetch-layers.ts"
+    "fetch-overpass": "node --loader ts-node/esm scripts/fetch-overpass.ts"
   },
   "dependencies": {
     "@turf/turf": "^6.5.0",
