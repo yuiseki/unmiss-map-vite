@@ -3,13 +3,13 @@ import { Feature, FeatureCollection, GeoJsonProperties, Point } from "geojson";
 import { GeoJSONFeature } from "maplibre-gl";
 import { useCallback } from "react";
 import { Marker, useMap } from "react-map-gl";
-import { feature } from "turf";
 
 export const GeoJSONToMarkers: React.FC<{
   geojson: FeatureCollection;
   emoji?: string;
 }> = ({ geojson, emoji }) => {
   const { current: map } = useMap();
+
   const onClickMarker = useCallback(
     (center: Feature<Point, GeoJsonProperties> | undefined) => {
       if (map === undefined || center === undefined) {
@@ -24,11 +24,13 @@ export const GeoJSONToMarkers: React.FC<{
         zoom: zoomTo,
       });
     },
-    []
+    [map]
   );
+
   if (geojson === undefined) {
     return null;
   }
+
   return (
     <>
       {geojson.features.map((feature) => {
@@ -77,6 +79,12 @@ export const GeoJSONToMarkers: React.FC<{
         if (emoji === "🚧") {
           zIndex = 115;
           fontSize = "1em";
+          name = "";
+        }
+
+        if (emoji === "🚗") {
+          zIndex = 100;
+          fontSize = "1.5em";
           name = "";
         }
 

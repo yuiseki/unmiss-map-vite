@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Map, NavigationControl } from "react-map-gl";
+import { Map, NavigationControl, ViewStateChangeEvent } from "react-map-gl";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import * as pmtiles from "pmtiles";
@@ -13,6 +13,7 @@ export const BaseMap: React.FC<{
   children?: any;
   style?: string;
   onMapLoad?: () => void;
+  onMapMoveEnd?: (e: ViewStateChangeEvent) => void;
 }> = ({
   longitude,
   latitude,
@@ -20,6 +21,7 @@ export const BaseMap: React.FC<{
   children,
   style = "https://yuiseki.github.io/vector-tile-south-sudan/style.json",
   onMapLoad,
+  onMapMoveEnd,
 }) => {
   // pmtiles protocol
   let pmtilesProtocol = new pmtiles.Protocol();
@@ -34,6 +36,12 @@ export const BaseMap: React.FC<{
     }
   }, []);
 
+  const onMoveEnd = useCallback((e: ViewStateChangeEvent) => {
+    if (onMapMoveEnd) {
+      onMapMoveEnd(e);
+    }
+  }, []);
+
   return (
     <Map
       style={{
@@ -42,6 +50,7 @@ export const BaseMap: React.FC<{
         height: "100vh",
       }}
       onLoad={onLoad}
+      onMoveEnd={onMoveEnd}
       mapLib={maplibregl}
       mapStyle={style}
       attributionControl={true}

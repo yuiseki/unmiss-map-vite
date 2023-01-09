@@ -12,9 +12,12 @@ import { RoadClosedLayer } from "./components/Layers/RoadClosedLayer";
 import { useLocalStorage } from "./hooks/localStorage";
 import { WaterLayer } from "./components/Layers/WaterLayer";
 import { RefugeeSiteLayer } from "./components/Layers/RefugeeSiteLayer";
+import { RoadEditLayer } from "./components/Layers/RoadEditLayer";
+import { ViewState, ViewStateChangeEvent } from "react-map-gl";
 
 function App() {
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [viewState, setViewState] = useState<ViewState>();
 
   const [incidentChecked, setIncidentChecked] = useLocalStorage(
     "unmiss-incident-checked",
@@ -24,6 +27,10 @@ function App() {
   const [roadClosedChecked, setRoadClosedChecked] = useLocalStorage(
     "unmiss-road-closed-checked",
     true
+  );
+  const [roadEditChecked, setRoadEditChecked] = useLocalStorage(
+    "unmiss-road-edit-checked",
+    false
   );
   const [militaryChecked, setMilitaryChecked] = useLocalStorage(
     "unmiss-military-checked",
@@ -57,6 +64,10 @@ function App() {
 
   const onMapLoad = useCallback(() => {
     setMapLoaded(true);
+  }, []);
+
+  const onMapMoveEnd = useCallback((e: ViewStateChangeEvent) => {
+    setViewState(e.viewState);
   }, []);
 
   const onChangeStyle = useCallback(
@@ -259,6 +270,15 @@ function App() {
         </div>
         <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
           <input
+            id="road-edit-checkbox"
+            type="checkbox"
+            checked={roadEditChecked}
+            onChange={(e) => setRoadEditChecked(e.target.checked)}
+          />
+          <label htmlFor="road-edit-checkbox"> 🚗 Road</label>
+        </div>
+        <div style={{ whiteSpace: "nowrap", paddingLeft: "15px" }}>
+          <input
             id="refugee-site-checkbox"
             type="checkbox"
             checked={refugeeSiteChecked}
@@ -309,9 +329,11 @@ function App() {
         zoom={6}
         style={styleJsonUrl}
         onMapLoad={onMapLoad}
+        onMapMoveEnd={onMapMoveEnd}
       >
         <CountryBorderLayer />
         {roadClosedChecked && <RoadClosedLayer />}
+        {roadEditChecked && <RoadEditLayer viewState={viewState} />}
         {incidentChecked && <IncidentLayer />}
         {militaryChecked && <MilitaryLayer />}
         {hospitalChecked && <HospitalLayer />}
