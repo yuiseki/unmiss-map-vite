@@ -21,11 +21,9 @@ The objective of this prototype is:
 ## How to try it
 
 - Fork this repository (Optional)
-- `git clone` repository
-- `npm i -g osmtogeojson`
+- `git clone` the repository
 - `npm ci`
-- `make clean`
-- `make`
+- `npm run fetch-overpass`
 - `npm run dev`
 - Open http://localhost:5173/unmiss-map-vite/
 

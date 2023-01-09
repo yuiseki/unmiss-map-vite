@@ -39,6 +39,10 @@ for await (const layer of config.layers) {
   let osmIdsQuery: string = "";
   let osmOverrideFeatures: any[] = [];
 
+  if (layer.name !== "road_closed") {
+    continue;
+  }
+
   if (layer.nwr) {
     subject = "nwr";
     tags = convertOverpassTag(layer.nwr);
@@ -66,7 +70,10 @@ for await (const layer of config.layers) {
       osmIds = yamlFiles.map((yamlFile) => parse(basename(yamlFile)).name);
       osmIdsQuery = `nwr(id:${osmIds.join(",")})(area.a);`;
       yamlFiles.map((yamlFile) => {
-        const osmOverrideFeatureJSON = load(readFileSync(yamlFile, "utf8")) as any;
+        const osmOverrideFeatureJSON = load(
+          readFileSync(yamlFile, "utf8")
+        ) as any;
+        osmOverrideFeatureJSON["id"] = parse(basename(yamlFile)).name;
         osmOverrideFeatures.push(osmOverrideFeatureJSON);
       });
     }
@@ -108,7 +115,11 @@ for await (const layer of config.layers) {
   if (osmOverrideFeatures.length > 0) {
     for (const feature of geojson.features) {
       for (const overrideFeature of osmOverrideFeatures) {
-        if (feature.id === overrideFeature.id) {
+        if (
+          feature.id &&
+          typeof feature.id === "string" &&
+          feature.id.includes(overrideFeature.id)
+        ) {
           if (feature.properties) {
             Object.assign(feature.properties, overrideFeature.properties);
           }
