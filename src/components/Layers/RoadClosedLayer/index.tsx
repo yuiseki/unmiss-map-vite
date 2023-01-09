@@ -31,7 +31,7 @@ const lineStyle: LineLayer = {
 };
 
 export const RoadClosedLayer: React.FC = () => {
-  const { data: geojson } = useSWR("./data/road_closed.geojson", fetcher);
+  const { data: geojson } = useSWR("./data/GeoJSON/road_closed.geojson", fetcher);
 
   return (
     <>
