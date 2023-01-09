@@ -56,7 +56,7 @@ export const RoadEditLayer: React.FC<{ viewState?: ViewState }> = ({
         return;
       }
       const zoom = map.getZoom();
-      if (zoom < 8) {
+      if (zoom < 9) {
         return;
       }
       const bounds = map.getBounds();

@@ -24,6 +24,7 @@ export const useOverpass = () => {
         way[highway="primary"](${bbox.join(",")});
         way[highway="secondary"](${bbox.join(",")});
         way[highway="tertiary"](${bbox.join(",")});
+        //way[highway="unclassified"](${bbox.join(",")});
       );
       out geom;
       `;
