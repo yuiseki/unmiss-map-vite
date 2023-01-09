@@ -159,6 +159,9 @@ function App() {
             <option value={"./styles/GSI/DEM/style.json"}>
               🏕 GSI DEM (raster)
             </option>
+            <option value={"./styles/PMTiles/raster-dem/style.json"}>
+              🏕 PMTiles DEM (raster)
+            </option>
             <option value={"./styles/ArcGIS/World_Imagery/style.json"}>
               🛰 ArcGIS World Imagery (raster)
             </option>
