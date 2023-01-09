@@ -9,6 +9,8 @@ layers:
   - name: hospital
     way:
       - amenity: hospital
+  - name: incidents
+    osm_ids_dir: data/incidents
   - name: military
     way:
       - landuse: military
@@ -27,6 +29,8 @@ layers:
       - amenity: refugee_site
       - emergency: assembly_point
       - social_facility: shelter
+  - name: road_closed
+    osm_ids_dir: data/road_closed
   - name: social_facility
     nwr:
       - social_facility:

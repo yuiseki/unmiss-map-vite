@@ -1,6 +1,9 @@
 import { load } from "js-yaml";
-import { readFileSync, writeFileSync } from "fs";
+import { existsSync, readFileSync, writeFileSync } from "fs";
+import glob from "glob";
 import osmtogeojson from "osmtogeojson";
+import { basename, parse } from "path";
+import { FeatureCollection } from "geojson";
 
 const config = load(readFileSync("overpass.yml", "utf8")) as any;
 
@@ -24,13 +27,18 @@ const convertOverpassNWRQuery = (subject: string, tags: string[]) => {
   });
 };
 
-const area_key = Object.keys(config.area)[0];
-const area_value = config.area[area_key];
+const areaKey = Object.keys(config.area)[0];
+const areaValue = config.area[areaKey];
 
 for await (const layer of config.layers) {
   let subject = "";
   let tags = [];
   let nwrQuery: string[][] = [];
+  let nwrQueries: string = "";
+  let osmIds: string[] = [];
+  let osmIdsQuery: string = "";
+  let osmOverrideFeatures: any[] = [];
+
   if (layer.nwr) {
     subject = "nwr";
     tags = convertOverpassTag(layer.nwr);
@@ -51,26 +59,63 @@ for await (const layer of config.layers) {
     tags = convertOverpassTag(layer.relation);
     nwrQuery.push(convertOverpassNWRQuery(subject, tags));
   }
+  if (layer.osm_ids_dir) {
+    subject = "nwr";
+    const yamlFiles = glob.sync(`./${layer.osm_ids_dir}/**/[!_]*.yml`);
+    if (yamlFiles.length > 0) {
+      osmIds = yamlFiles.map((yamlFile) => parse(basename(yamlFile)).name);
+      osmIdsQuery = `nwr(id:${osmIds.join(",")})(area.a);`;
+      yamlFiles.map((yamlFile) => {
+        const osmOverrideFeatureJSON = load(readFileSync(yamlFile, "utf8")) as any;
+        osmOverrideFeatures.push(osmOverrideFeatureJSON);
+      });
+    }
+  }
+
+  if (nwrQuery.length > 0) {
+    nwrQueries = nwrQuery.flat().join(";\n      ") + ";";
+  }
+
+  if (nwrQueries.length === 0 && osmIdsQuery.length === 0) {
+    continue;
+  }
 
   const query = `
     [out:json][timeout:30000];
-    area['${area_key}'='${area_value}']->.a;
+    area['${areaKey}'='${areaValue}']->.a;
     (
-      ${nwrQuery.flat().join(";\n      ")};
+      ${nwrQueries}
+      ${osmIdsQuery}
     );
     out geom;
   `;
   console.log(query);
 
-  const res = await fetch("https://overpass-api.de/api/interpreter", {
-    method: "POST",
-    body: query,
-  });
-  const json = await res.json();
-  const geojson = osmtogeojson(json);
+  const geojsonFilePath = `public/data/GeoJSON/${layer.name}.geojson`;
 
-  writeFileSync(
-    `public/data/GeoJSON/${layer.name}.geojson`,
-    JSON.stringify(geojson, undefined, 2)
-  );
+  let geojson: FeatureCollection;
+  if (existsSync(geojsonFilePath)) {
+    geojson = JSON.parse(readFileSync(geojsonFilePath, "utf-8"));
+  } else {
+    const res = await fetch("https://overpass-api.de/api/interpreter", {
+      method: "POST",
+      body: query,
+    });
+    const json = await res.json();
+    geojson = osmtogeojson(json);
+  }
+
+  if (osmOverrideFeatures.length > 0) {
+    for (const feature of geojson.features) {
+      for (const overrideFeature of osmOverrideFeatures) {
+        if (feature.id === overrideFeature.id) {
+          if (feature.properties) {
+            Object.assign(feature.properties, overrideFeature.properties);
+          }
+        }
+      }
+    }
+  }
+
+  writeFileSync(geojsonFilePath, JSON.stringify(geojson, undefined, 2));
 }
