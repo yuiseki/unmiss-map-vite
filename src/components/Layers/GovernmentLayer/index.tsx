@@ -16,7 +16,10 @@ const layerStyle: FillLayer = {
 };
 
 export const GovernmentLayer: React.FC = () => {
-  const { data: geojson } = useSWR("./data/government.geojson", fetcher);
+  const { data: geojson } = useSWR(
+    "./data/GeoJSON/government.geojson",
+    fetcher
+  );
 
   return (
     <>

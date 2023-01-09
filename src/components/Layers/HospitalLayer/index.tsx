@@ -16,7 +16,7 @@ const layerStyle: FillLayer = {
 };
 
 export const HospitalLayer: React.FC = () => {
-  const { data: geojson } = useSWR("./data/hospital.geojson", fetcher);
+  const { data: geojson } = useSWR("./data/GeoJSON/hospital.geojson", fetcher);
 
   return (
     <>

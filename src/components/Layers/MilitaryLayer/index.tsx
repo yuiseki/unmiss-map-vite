@@ -16,7 +16,7 @@ const layerStyle: FillLayer = {
 };
 
 export const MilitaryLayer: React.FC = () => {
-  const { data: geojson } = useSWR("./data/military.geojson", fetcher);
+  const { data: geojson } = useSWR("./data/GeoJSON/military.geojson", fetcher);
 
   return (
     <>

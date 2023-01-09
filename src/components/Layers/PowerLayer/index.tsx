@@ -16,7 +16,7 @@ const layerStyle: FillLayer = {
 };
 
 export const PowerLayer: React.FC = () => {
-  const { data: geojson } = useSWR("./data/power.geojson", fetcher);
+  const { data: geojson } = useSWR("./data/GeoJSON/power.geojson", fetcher);
 
   return (
     <>

@@ -31,7 +31,10 @@ const lineStyle: LineLayer = {
 };
 
 export const RefugeeSiteLayer: React.FC = () => {
-  const { data: geojson } = useSWR("./data/refugee_site.geojson", fetcher);
+  const { data: geojson } = useSWR(
+    "./data/GeoJSON/refugee_site.geojson",
+    fetcher
+  );
 
   return (
     <>

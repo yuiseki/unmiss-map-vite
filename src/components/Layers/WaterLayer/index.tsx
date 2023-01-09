@@ -31,7 +31,7 @@ const lineStyle: LineLayer = {
 };
 
 export const WaterLayer: React.FC = () => {
-  const { data: geojson } = useSWR("./data/water_point.geojson", fetcher);
+  const { data: geojson } = useSWR("./data/GeoJSON/water.geojson", fetcher);
 
   return (
     <>
