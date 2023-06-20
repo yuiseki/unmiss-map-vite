@@ -29,7 +29,7 @@
     "@types/react-dom": "^18.0.9",
     "@types/react-map-gl": "^6.1.3",
     "@types/turf": "^3.5.32",
-    "@vitejs/plugin-react": "^3.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
     "typescript": "^5.0.0",
